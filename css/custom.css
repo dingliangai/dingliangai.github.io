@@ -25,10 +25,10 @@
 
 /* 导航栏 */
   /* 翻页按钮居中 */
-#pagination {
+/* #pagination {
   width: 100%;
   margin: auto;
-}
+} */
 
 /* 一级菜单居中 */
 #nav .menus_items {
@@ -447,3 +447,13 @@ div#archive {
 }
 /* fps */
 /* 帧率检测 */
+
+/* 图标大小 */
+svg.icon {
+  width: 1.28em;
+  height: 1.28em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
