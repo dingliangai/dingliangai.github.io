@@ -4,25 +4,6 @@
   
     
     <entry>
-      <title>二</title>
-      <link href="/2024/01/01/2/"/>
-      <url>/2024/01/01/2/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>一</title>
       <link href="/2024/01/01/1/"/>
       <url>/2024/01/01/1/</url>
@@ -33,6 +14,25 @@
       <categories>
           
           <category> C++ </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>二</title>
+      <link href="/2024/01/01/2/"/>
+      <url>/2024/01/01/2/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
           
       </categories>
       
@@ -61,6 +61,17 @@
     
   
   
+    
+    
+    <entry>
+      <title>文章标题</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
     
     
     <entry>
@@ -98,21 +109,21 @@
     
     <entry>
       <title></title>
-      <link href="/css/runtime.css"/>
-      <url>/css/runtime.css</url>
+      <link href="/js/cursor.js"/>
+      <url>/js/cursor.js</url>
       
-        <content type="html"><![CDATA[/*电子钟字体*/@font-face {    font-family: 'UnidreamLED';    src: url("https://cdn.jsdelivr.net/npm/akilar-candyassets/fonts/UnidreamLED.ttf");    font-display: swap;  }  div#runtime {    width: 180px;    margin: auto;    color: #fff;    padding-inline: 5px;    border-radius: 10px;    background-color: rgba(0,0,0,0.7);    font-family: 'UnidreamLED';  }  [data-theme="dark"] div#runtime {    color: #28b4c8;    box-shadow: 0 0 5px rgba(28,69,218,0.71);    animation: flashlight 1s linear infinite alternate;  }  /*悬停显示徽标提示语*/  a.github-badge:hover:before {    position: fixed;    width: fit-content;    margin: auto;    left: 0;    right: 0;    top: 10%;    border-radius: 10px;    text-align: center;    z-index: 100;    content: attr(data-title);    font-size: 20px;    color: #fff;    padding: 10px;    background-color: var(--text-bg-hover);  }  [data-theme=dark] a.github-badge:hover:before {    background-color: rgba(18,18,18,0.8);  }  @-moz-keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }  @-webkit-keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }  @-o-keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }  @keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }]]></content>
+        <content type="html"><![CDATA[var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) {}    return "";};class Cursor {    constructor() {        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='1.0' fill='rgb(255, 255, 255)'/></svg>") 4 4, auto}`;    }                                                                                                                                                                                                                                                                                    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover  = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout   = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove  = e => {(this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = {x: e.clientX - 8, y: e.clientY - 8}; this.cursor.classList.remove("hidden");};        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown  = e => this.cursor.classList.add("active");        document.onmouseup    = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>文章标题</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title></title>
+      <link href="/css/runtime.css"/>
+      <url>/css/runtime.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[/*电子钟字体*/@font-face {    font-family: 'UnidreamLED';    src: url("https://cdn.jsdelivr.net/npm/akilar-candyassets/fonts/UnidreamLED.ttf");    font-display: swap;  }  div#runtime {    width: 180px;    margin: auto;    color: #fff;    padding-inline: 5px;    border-radius: 10px;    background-color: rgba(0,0,0,0.7);    font-family: 'UnidreamLED';  }  [data-theme="dark"] div#runtime {    color: #28b4c8;    box-shadow: 0 0 5px rgba(28,69,218,0.71);    animation: flashlight 1s linear infinite alternate;  }  /*悬停显示徽标提示语*/  a.github-badge:hover:before {    position: fixed;    width: fit-content;    margin: auto;    left: 0;    right: 0;    top: 10%;    border-radius: 10px;    text-align: center;    z-index: 100;    content: attr(data-title);    font-size: 20px;    color: #fff;    padding: 10px;    background-color: var(--text-bg-hover);  }  [data-theme=dark] a.github-badge:hover:before {    background-color: rgba(18,18,18,0.8);  }  @-moz-keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }  @-webkit-keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }  @-o-keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }  @keyframes flashlight {    from {      box-shadow: 0 0 5px #1478d2;    }    to {      box-shadow: 0 0 2px #1478d2;    }  }]]></content>
       
     </entry>
     
@@ -124,17 +135,6 @@
       <url>/js/cat.js</url>
       
         <content type="html"><![CDATA[if (document.body.clientWidth > 992) {    function getBasicInfo() {        /* 窗口高度 */        var ViewH = $(window).height();        /* document高度 */        var DocH = $("body")[0].scrollHeight;        /* 滚动的高度 */        var ScrollTop = $(window).scrollTop();        /* 可滚动的高度 */        var S_V = DocH - ViewH;        var Band_H = ScrollTop / (DocH - ViewH) * 100;        return {            ViewH: ViewH,            DocH: DocH,            ScrollTop: ScrollTop,            Band_H: Band_H,            S_V: S_V        }    };    function show(basicInfo) {        if (basicInfo.ScrollTop > 0.001) {            $(".neko").css('display', 'block');        } else {            $(".neko").css('display', 'none');        }    }    (function ($) {        $.fn.nekoScroll = function (option) {            var defaultSetting = {                top: '0',                scroWidth: 6 + 'px',                z_index: 9999,                zoom: 0.9,                borderRadius: 5 + 'px',                right: 60 + 'px',                // 这里可以换为你喜欢的图片，例如我就换为了雪人，但是要抠图                nekoImg: "/img/latiao.png",                hoverMsg: "欢迎~",                color: "#6f42c1",                during: 500,                blog_body: "body",            };            var setting = $.extend(defaultSetting, option);            var getThis = this.prop("className") !== "" ? "." + this.prop("className") : this.prop("id") !== "" ? "#" +                this.prop("id") : this.prop("nodeName");            if ($(".neko").length == 0) {                this.after("<div class=\"neko\" id=" + setting.nekoname + " data-msg=\"" + setting.hoverMsg + "\"></div>");            }            let basicInfo = getBasicInfo();            $(getThis)                .css({                    'position': 'fixed',                    'width': setting.scroWidth,                    'top': setting.top,                    'height': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 + 'px',                    'z-index': setting.z_index,                    'background-color': setting.bgcolor,                    "border-radius": setting.borderRadius,                    'right': setting.right,                    'background-image': 'url(' + setting.scImg + ')',                    'background-image': '-webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent)', 'border-radius': '2em',                    'background-size': 'contain'                });            $("#" + setting.nekoname)                .css({                    'position': 'fixed',                    'top': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 - 50 + 'px',                    'z-index': setting.z_index * 10,                    'right': setting.right,                    'background-image': 'url(' + setting.nekoImg + ')',                });            show(getBasicInfo());            $(window)                .scroll(function () {                    let basicInfo = getBasicInfo();                    show(basicInfo);                    $(getThis)                        .css({                            'position': 'fixed',                            'width': setting.scroWidth,                            'top': setting.top,                            'height': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 + 'px',                            'z-index': setting.z_index,                            'background-color': setting.bgcolor,                            "border-radius": setting.borderRadius,                            'right': setting.right,                            'background-image': 'url(' + setting.scImg + ')',                            'background-image': '-webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent)', 'border-radius': '2em',                            'background-size': 'contain'                        });                    $("#" + setting.nekoname)                        .css({                            'position': 'fixed',                            'top': basicInfo.Band_H * setting.zoom * basicInfo.ViewH * 0.01 - 50 + 'px',                            'z-index': setting.z_index * 10,                            'right': setting.right,                            'background-image': 'url(' + setting.nekoImg + ')',                        });                    if (basicInfo.ScrollTop == basicInfo.S_V) {                        $("#" + setting.nekoname)                            .addClass("showMsg")                    } else {                        $("#" + setting.nekoname)                            .removeClass("showMsg");                        $("#" + setting.nekoname)                            .attr("data-msg", setting.hoverMsg);                    }                });            this.click(function (e) {                btf.scrollToDest(0, 500)            });            $("#" + setting.nekoname)                .click(function () {                    btf.scrollToDest(0, 500)                });            return this;        }    })(jQuery);    $(document).ready(function () {        //部分自定义        $("#myscoll").nekoScroll({            bgcolor: 'rgb(210 195 232 / .5)', //背景颜色，没有绳子背景图片时有效            borderRadius: '2em',            zoom: 0.9        }        );        //自定义（去掉以下注释，并注释掉其他的查看效果）        /*        $("#myscoll").nekoScroll({            nekoname:'neko1', //nekoname，相当于id            nekoImg:'img/猫咪.png', //neko的背景图片            scImg:"img/绳1.png", //绳子的背景图片            bgcolor:'#1e90ff', //背景颜色，没有绳子背景图片时有效            zoom:0.9, //绳子长度的缩放值            hoverMsg:'你好~喵', //鼠标浮动到neko上方的对话框信息            right:'100px', //距离页面右边的距离            fontFamily:'楷体', //对话框字体            fontSize:'14px', //对话框字体的大小            color:'#1e90ff', //对话框字体颜色            scroWidth:'8px', //绳子的宽度            z_index:100, //不用解释了吧            during:1200, //从顶部到底部滑动的时长        });        */    })}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/cursor.js"/>
-      <url>/js/cursor.js</url>
-      
-        <content type="html"><![CDATA[var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) {}    return "";};class Cursor {    constructor() {        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='1.0' fill='rgb(255, 255, 255)'/></svg>") 4 4, auto}`;    }                                                                                                                                                                                                                                                                                    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover  = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout   = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove  = e => {(this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = {x: e.clientX - 8, y: e.clientY - 8}; this.cursor.classList.remove("hidden");};        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown  = e => this.cursor.classList.add("active");        document.onmouseup    = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
       
     </entry>
     
