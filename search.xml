@@ -33,34 +33,46 @@
       <link href="/2024/01/01/2/"/>
       <url>/2024/01/01/2/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[我的世界]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 这是什么 </tag>
+            
+        </tags>
       
     </entry>
     
     
     
     <entry>
-      <title>三</title>
+      <title>一</title>
       <link href="/2024/01/01/3/"/>
       <url>/2024/01/01/3/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[我的世界]]></content>
       
       
       <categories>
           
-          <category> C++ </category>
+          <category> Python </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 这是什么 </tag>
+            
+        </tags>
       
     </entry>
     
