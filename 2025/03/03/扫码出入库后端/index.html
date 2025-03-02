@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>星河漫记🥝 | 星河漫记🥝</title><meta name="author" content="星辰亮"><meta name="copyright" content="星辰亮"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="扫码出入库系统——后端设计一、设计思路将用户等级设置三个等级，①操作员②管理员③工程师 操作员只有扫码识别的功能，管理员可以进行扫码操作，资源管理，工程师完成前面的工作的同时，还可以看到后端的用户信息，以及相机配置和通讯信息设置 通过数据库与前端进行交互，对物资信息以及用户信息进行管理 后端内容通过c++封装动态链接库dll加入到winform中 1登录界面 账号为11位数字组合，推荐使用手机号注">
+<meta property="og:type" content="article">
+<meta property="og:title" content="星河漫记🥝">
+<meta property="og:url" content="http://example.com/2025/03/03/%E6%89%AB%E7%A0%81%E5%87%BA%E5%85%A5%E5%BA%93%E5%90%8E%E7%AB%AF/index.html">
+<meta property="og:site_name" content="星河漫记🥝">
+<meta property="og:description" content="扫码出入库系统——后端设计一、设计思路将用户等级设置三个等级，①操作员②管理员③工程师 操作员只有扫码识别的功能，管理员可以进行扫码操作，资源管理，工程师完成前面的工作的同时，还可以看到后端的用户信息，以及相机配置和通讯信息设置 通过数据库与前端进行交互，对物资信息以及用户信息进行管理 后端内容通过c++封装动态链接库dll加入到winform中 1登录界面 账号为11位数字组合，推荐使用手机号注">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-02T18:00:24.076Z">
+<meta property="article:modified_time" content="2025-03-01T17:39:23.327Z">
+<meta property="article:author" content="星辰亮">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/03/03/%E6%89%AB%E7%A0%81%E5%87%BA%E5%85%A5%E5%BA%93%E5%90%8E%E7%AB%AF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '星河漫记🥝',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-02 01:39:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-SmartHome"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-SmartHome"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-guidang"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guidang"></use></svg><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw icon-shengdanbiaoqian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shengdanbiaoqian"></use></svg><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-fenlei"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fenlei"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-icon_80px_yiwancheng"></use></svg><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-yinle">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon--dianyingpiao-">                   </use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw icon-guanlian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanlian"></use></svg><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><i class="fa-fw icon-aixin"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-aixin"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">星河漫记🥝</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-SmartHome"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-SmartHome"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-guidang"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guidang"></use></svg><span> 归档</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw icon-shengdanbiaoqian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shengdanbiaoqian"></use></svg><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-fenlei"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fenlei"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-icon_80px_yiwancheng"></use></svg><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-yinle">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon--dianyingpiao-">                   </use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw icon-guanlian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanlian"></use></svg><span> 友链</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><i class="fa-fw icon-aixin"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-aixin"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-02T18:00:24.076Z" title="发表于 2025-03-03 02:00:24">2025-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-01T17:39:23.327Z" title="更新于 2025-03-02 01:39:23">2025-03-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="扫码出入库系统——后端设计"><a href="#扫码出入库系统——后端设计" class="headerlink" title="扫码出入库系统——后端设计"></a>扫码出入库系统——后端设计</h1><h2 id="一、设计思路"><a href="#一、设计思路" class="headerlink" title="一、设计思路"></a>一、设计思路</h2><p>将用户等级设置三个等级，①操作员②管理员③工程师</p>
+<p>操作员只有扫码识别的功能，管理员可以进行扫码操作，资源管理，工程师完成前面的工作的同时，还可以看到后端的用户信息，以及相机配置和通讯信息设置</p>
+<p>通过数据库与前端进行交互，对物资信息以及用户信息进行管理</p>
+<p>后端内容通过c++封装动态链接库dll加入到winform中</p>
+<h3 id="1登录界面"><a href="#1登录界面" class="headerlink" title="1登录界面"></a>1登录界面</h3><p><img src="https://pic1.imgdb.cn/item/67c340d1d0e0a243d4094d44.png" alt=""></p>
+<p>账号为11位数字组合，推荐使用手机号注册，软件初始内置三个测试账号，操作员账号：11111111111密码：123456，管理员账号：22222222222密码：123456，工程师账号：33333333333密码：123456。</p>
+<p>用户名长度为3-20的任意字符，账号推荐使用11位手机号，密码为长度在8~18之间,大写或小写字母+数字+字符，邮箱是找回密码的唯一途径，需牢记。</p>
+<h3 id="2出入库"><a href="#2出入库" class="headerlink" title="2出入库"></a>2出入库</h3><p><img src="https://pic1.imgdb.cn/item/67c33f7ed0e0a243d4094bc9.png" alt=""></p>
+<p>该界面主要负责出入库功能，使用扫码功能要打开相机，上位机端支持同时出入库多件物品，会根据操作顺序向下位机发送信息。</p>
+<h3 id="3资源管理"><a href="#3资源管理" class="headerlink" title="3资源管理"></a>3资源管理</h3><p><img src="https://pic1.imgdb.cn/item/67c33fc2d0e0a243d4094bce.png" alt=""></p>
+<p>1、查询：选择查询方式并填写信息后点击该按钮即可筛选出所需内容。</p>
+<p>2、添加：在最下方空白单元格填写完整信息后点击该按钮即可添加。</p>
+<p>3、删除：单击所需删除单元格，点击该按钮。</p>
+<p>4、修改：双击所需修改单元格，修改后单击该按钮保存。</p>
+<p>注：种类1为大箱子，0为小箱子；在库状态1为在库，0为借出</p>
+<h3 id="4用户管理"><a href="#4用户管理" class="headerlink" title="4用户管理"></a>4用户管理</h3><p><img src="https://pic1.imgdb.cn/item/67c33fe4d0e0a243d4094bcf.png" alt=""></p>
+<p>1、查询：选择查询方式并填写信息后点击该按钮即可筛选出所需内容。</p>
+<p>2、添加：在最下方空白单元格填写完整信息后点击该按钮即可添加。</p>
+<p>3、删除：单击所需删除单元格，点击该按钮。</p>
+<p>4、修改：双击所需修改单元格，修改后单击该按钮保存。</p>
+<p>注：权限0为操作员，1为管理员，2为工程师</p>
+<h3 id="5相机设置界面"><a href="#5相机设置界面" class="headerlink" title="5相机设置界面"></a>5相机设置界面</h3><p><img src="https://pic1.imgdb.cn/item/67c34610d0e0a243d4094fbc.png" alt=""></p>
+<p>打开相机后根据要求填写参数，点击保存设置后生效。</p>
+<h3 id="6通讯设置界面"><a href="#6通讯设置界面" class="headerlink" title="6通讯设置界面"></a>6通讯设置界面</h3><p><img src="https://pic1.imgdb.cn/item/67c34245d0e0a243d4094f19.png" alt=""></p>
+<h2 id="二、软件使用环境配置"><a href="#二、软件使用环境配置" class="headerlink" title="二、软件使用环境配置"></a>二、软件使用环境配置</h2><h3 id="1-相机配置（以默认安装路径为例）"><a href="#1-相机配置（以默认安装路径为例）" class="headerlink" title="1.相机配置（以默认安装路径为例）"></a>1.相机配置（以默认安装路径为例）</h3><p>在<a target="_blank" rel="noopener" href="https://www.hikrobotics.com/cn/machinevision/service/download?module=0">海康工业相机官网</a>下载机器视觉工业相机客户端MVS(Windows)，使用该软件导入项目三.mfs配置文件，该文件在C:\Program Files\CCZUXBOTSchool\QRWMS\configure下。</p>
+<h3 id="2-数据库配置（以默认安装路径为例）"><a href="#2-数据库配置（以默认安装路径为例）" class="headerlink" title="2.数据库配置（以默认安装路径为例）"></a>2.数据库配置（以默认安装路径为例）</h3><p>数据库使用Mysql8.0.1及以上版本，找到安装目录C:\Program Files\CCZUXBOTSchool\QRWMS\configure\database下的laopaoer.sql文件，双击运行该文件即可自动生成数据库。</p>
+<p>使用记事本打开C:\Program Files\CCZUXBOTSchool\QRWMS下的config.ini文件，修改这四项为安装数据库时的信息并保存。</p>
+<p><img src="https://pic1.imgdb.cn/item/67c34319d0e0a243d4094f20.png" alt=""></p>
+<h3 id="3-PLC配置（以默认安装路径为例）"><a href="#3-PLC配置（以默认安装路径为例）" class="headerlink" title="3.PLC配置（以默认安装路径为例）"></a>3.PLC配置（以默认安装路径为例）</h3><p>使用记事本打开C:\Program Files\CCZUXBOTSchool\QRWMS下的config.ini文件，修改这两项为PLC的IP及端口号并保存。</p>
+<p>![img](扫码出入库后端.assets/wps2.jpg</p>
+<p><img src="https://pic1.imgdb.cn/item/67c3432ad0e0a243d4094f37.png" alt=""></p>
+<h2 id="三、常见问题"><a href="#三、常见问题" class="headerlink" title="三、常见问题"></a>三、常见问题</h2><h3 id="1-无法保存config-ini文件"><a href="#1-无法保存config-ini文件" class="headerlink" title="1 无法保存config.ini文件"></a>1 无法保存config.ini文件</h3><p>问题现象：保存config.ini文件时提示权限不够</p>
+<p>问题原因：用户权限不够</p>
+<p>解决方法：请右击该文件找到属性选项，打开安全选项卡，勾选所有权限后保存</p>
+<p><img src="https://pic1.imgdb.cn/item/67c3436ad0e0a243d4094f42.png" alt=""></p>
+<h3 id="2打开软件后无反应"><a href="#2打开软件后无反应" class="headerlink" title="2打开软件后无反应"></a>2打开软件后无反应</h3><p>问题现象：打开软件后无反应</p>
+<p>问题原因：MySQL相关dll文件缺失</p>
+<p>解决方法：重新下载Mysql8.0.1版本，安装时默认位置不要修改</p>
+<h3 id="3数据库连接失败"><a href="#3数据库连接失败" class="headerlink" title="3数据库连接失败"></a>3数据库连接失败</h3><p>问题现象：<img src="https://pic1.imgdb.cn/item/67c3442fd0e0a243d4094f4f.png" alt=""></p>
+<p>问题原因：数据库密码或用户错误，无法连接数据库</p>
+<p>解决方法：根据3.2节配置数据库</p>
+<p>问题现象：<img src="https://pic1.imgdb.cn/item/67c3446cd0e0a243d4094f57.png" alt=""></p>
+<p>问题原因：PLC连接失败，IP或端口号错误</p>
+<p>解决方法：此问题出现前常伴随登录后短暂卡顿，这是正常现象，请耐心等待，并根据3.3节配置PLC</p>
+<h3 id="4相机打开后黑屏"><a href="#4相机打开后黑屏" class="headerlink" title="4相机打开后黑屏"></a>4相机打开后黑屏</h3><p>问题现象：<img src="https://pic1.imgdb.cn/item/67c3449dd0e0a243d4094f5f.png" alt=""></p>
+<p>问题原因：相机连接失败</p>
+<p>解决方法：根据3.1节配置相机</p>
+<h3 id="5工业相机指示灯闪红灯"><a href="#5工业相机指示灯闪红灯" class="headerlink" title="5工业相机指示灯闪红灯"></a>5工业相机指示灯闪红灯</h3><p>问题现象：连接相机后无画面，且工业相机后端闪红灯</p>
+<p>问题原因：1、未使用USB3.0接口2、相机驱动未安装</p>
+<p>解决方法：1、接入USB3.0接口2、打开安装目录下C:\Program Files\CCZUXBOTSchool\QRWMS\configure的device.exe文件安装驱动</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">星辰亮</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/03/03/%E6%89%AB%E7%A0%81%E5%87%BA%E5%85%A5%E5%BA%93%E5%90%8E%E7%AB%AF/">http://example.com/2025/03/03/%E6%89%AB%E7%A0%81%E5%87%BA%E5%85%A5%E5%BA%93%E5%90%8E%E7%AB%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">星河漫记🥝</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/03/%E6%89%AB%E7%A0%81%E5%87%BA%E5%85%A5%E5%BA%93UI/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2025/03/03/%E6%9C%BA%E6%A2%B0%E8%87%82%E4%BB%BF%E7%9C%9F/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">星辰亮</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="/img/wechat.JPG" target="_blank" title="微信"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-weixin"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/img/QQ.png" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/510897133?spm_id_from=333.788.0.0" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-Bilibili-Bzhan"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://blog.csdn.net/qq_63041602?type=blog" target="_blank" title="csdn"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-csdn"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:5px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">新人第一天写博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%AB%E7%A0%81%E5%87%BA%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E5%90%8E%E7%AB%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">扫码出入库系统——后端设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.</span> <span class="toc-text">一、设计思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2"><span class="toc-number">1.1.1.</span> <span class="toc-text">1登录界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E5%87%BA%E5%85%A5%E5%BA%93"><span class="toc-number">1.1.2.</span> <span class="toc-text">2出入库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.3.</span> <span class="toc-text">3资源管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text">4用户管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E7%9B%B8%E6%9C%BA%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2"><span class="toc-number">1.1.5.</span> <span class="toc-text">5相机设置界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E9%80%9A%E8%AE%AF%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2"><span class="toc-number">1.1.6.</span> <span class="toc-text">6通讯设置界面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">二、软件使用环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B8%E6%9C%BA%E9%85%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.相机配置（以默认安装路径为例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.数据库配置（以默认安装路径为例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-PLC%E9%85%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.PLC配置（以默认安装路径为例）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">三、常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%97%A0%E6%B3%95%E4%BF%9D%E5%AD%98config-ini%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.</span> <span class="toc-text">1 无法保存config.ini文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%89%93%E5%BC%80%E8%BD%AF%E4%BB%B6%E5%90%8E%E6%97%A0%E5%8F%8D%E5%BA%94"><span class="toc-number">1.3.2.</span> <span class="toc-text">2打开软件后无反应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.3.3.</span> <span class="toc-text">3数据库连接失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E7%9B%B8%E6%9C%BA%E6%89%93%E5%BC%80%E5%90%8E%E9%BB%91%E5%B1%8F"><span class="toc-number">1.3.4.</span> <span class="toc-text">4相机打开后黑屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E5%B7%A5%E4%B8%9A%E7%9B%B8%E6%9C%BA%E6%8C%87%E7%A4%BA%E7%81%AF%E9%97%AA%E7%BA%A2%E7%81%AF"><span class="toc-number">1.3.5.</span> <span class="toc-text">5工业相机指示灯闪红灯</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:5px" aria-hidden="true"><use xlink:href="#icon-gengxin"></use></svg></a><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/03/03/%E8%87%AA%E4%B8%BB%E5%B7%A1%E8%88%AA%E8%B5%9B/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/03/03/%E8%87%AA%E4%B8%BB%E5%B7%A1%E8%88%AA%E8%B5%9B/" title="无题">无题</a><time datetime="2025-03-02T18:02:28.065Z" title="发表于 2025-03-03 02:02:28">2025-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/03/%E4%B9%A6%E7%AD%BE%E4%BA%A7%E7%BA%BFUI/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/03/03/%E4%B9%A6%E7%AD%BE%E4%BA%A7%E7%BA%BFUI/" title="无题">无题</a><time datetime="2025-03-02T18:02:20.891Z" title="发表于 2025-03-03 02:02:20">2025-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/03/%E4%B9%A6%E7%AD%BE%E4%BA%A7%E7%BA%BF%E8%A7%86%E8%A7%89/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/03/03/%E4%B9%A6%E7%AD%BE%E4%BA%A7%E7%BA%BF%E8%A7%86%E8%A7%89/" title="无题">无题</a><time datetime="2025-03-02T18:02:20.871Z" title="发表于 2025-03-03 02:02:20">2025-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/03/opencv/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/03/03/opencv/" title="无题">无题</a><time datetime="2025-03-02T18:02:10.892Z" title="发表于 2025-03-03 02:02:10">2025-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/03/YOLO%E9%85%8D%E7%BD%AE/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/03/03/YOLO%E9%85%8D%E7%BD%AE/" title="无题">无题</a><time datetime="2025-03-02T18:02:10.875Z" title="发表于 2025-03-03 02:02:10">2025-03-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 星辰亮</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script async src="//at.alicdn.com/t/c/font_4811505_bek6pd1yggu.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/cover/1.jpg);"> <a class="categoryBar-list-link" href="categories/项目/">项目</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">c++</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://dashboard.4everland.org/" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于4EVERLAND" title=""><img src="https://img.shields.io/badge/Hosted-4EVERLAND-22DDDD?style=flat&amp;logo=IPFS" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
